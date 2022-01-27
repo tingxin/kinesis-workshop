@@ -26,3 +26,13 @@ docker run -it --rm --name maxwell-kinesis -e AWS_ACCESS_KEY_ID -e AWS_SECRET_AC
 ```
 docker run -it --rm --name maxwell -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -v `cd && pwd`/.aws:/root/.aws zendesk/maxwell sh -c 'cp /app/kinesis-producer-library.properties.example /app/kinesis-producer-library.properties && echo "Region=$AWS_DEFAULT_REGION" >> /app/kinesis-producer-library.properties && bin/maxwell --user=admin --password=Demo1234 --host=abdemo.cluster-cqshokmqgqfv.ap-northeast-1.rds.amazonaws.com --producer=kinesis --kinesis_stream=order_ds'
 ```
+
+```
+
+CREATE TABLE IF NOT EXISTS customer (
+    email varchar(20) NOT NULL,
+    level INT NOT NULL,
+    sex varchar(20) NOT NULL,
+    PRIMARY KEY (email)
+);
+```
