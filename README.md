@@ -16,11 +16,11 @@ export AWS_DEFAULT_REGION=us-west-2
 ## 安装maxwell
 拉取
 ```
-docker pull saidimu/maxwell
+docker pull zendesk/maxwell
 ```
 启动
 ```
-docker run -it --rm --name maxwell-kinesis -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -v `cd && pwd`/.aws:/root/.aws saidimu/maxwell  sh -c 'cp /app/kinesis-producer-library.properties.example /app/kinesis-producer-library.properties && echo "Region=ap-northeast-1" >>/app/kinesis-producer-library.properties && /app/bin/maxwell --user=DB_USERNAME --password=DB_PASSWORD --host=MYSQL_RDS_URI --producer=kinesis --kinesis_stream=KINESIS_NAME '
+docker run -it --rm --name maxwell-kinesis -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -v `cd && pwd`/.aws:/root/.aws zendesk/maxwell  sh -c 'cp /app/kinesis-producer-library.properties.example /app/kinesis-producer-library.properties && echo "Region=ap-northeast-1" >>/app/kinesis-producer-library.properties && /app/bin/maxwell --user={DB_USERNAME} --password={DB_PASSWORD} --host={MYSQL_RDS_URI} --producer=kinesis --kinesis_stream={KINESIS_NAME}'
 ```
 修改成自己的参数
 ```
@@ -35,4 +35,37 @@ CREATE TABLE IF NOT EXISTS customer (
     sex varchar(20) NOT NULL,
     PRIMARY KEY (email)
 );
+```
+
+```
+        this.email = c.getEmail();
+        this.sex =c.getSex();
+        this.city = e.getCity();
+        this.orderId = e.getOrderId();
+        this.status = e.getStatus();
+        this.goodCount = e.getGoodCount();
+        this.amount = e.getAmount();
+        this.createTime = e.getCreateTime();
+
+CREATE TABLE IF NOT EXISTS customer (
+    email varchar(20) NOT NULL,
+    sex varchar(20) NOT NULL,
+    level INT,
+    city varchar(20) NOT NULL,
+    orderId INT,
+    status varchar(20) NOT NULL,
+    goodCount INT,
+    amount Double,
+    createTime Timestamp
+);
+```
+
+firehouse
+```
+161.189.23.64/27
+
+mock-order-event
+metrics-ds
+
+json 'auto'
 ```

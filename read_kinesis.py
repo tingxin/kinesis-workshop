@@ -1,6 +1,8 @@
+from re import U
 import boto3
 from setting import *
 import time
+import json
 import sys
 
 if __name__ == '__main__':
@@ -26,5 +28,6 @@ if __name__ == '__main__':
             ShardIterator=record_response['NextShardIterator'], Limit=100)
         if len(record_response['Records']) > 0:
             for record in record_response['Records']:
+                # data = record["Data"]
+                # u = json.loads(data)
                 print(record)
-                time.sleep(1)
