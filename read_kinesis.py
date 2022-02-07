@@ -1,8 +1,5 @@
-from re import U
 import boto3
 from setting import *
-import time
-import json
 import sys
 
 if __name__ == '__main__':

@@ -1,3 +1,6 @@
 Faker
 PyMySQL
 pysqler
+boto3
+flask
+flask_socketio

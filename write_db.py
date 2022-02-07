@@ -13,7 +13,6 @@ creator = gen()
 for item in creator:
     try:
         command = Insert("`{0}`".format(setting.Focus_TB))
-        item = gen
         for key in item:
             command.put(key, item[key])
 

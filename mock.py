@@ -33,9 +33,9 @@ def gen(interval_min=1000, interval_max=5000):
             item["create_time"] = now_str
             item["update_time"] = now_str
         else:
-            day = fake.random_int(min=1, max=10)
+            m = fake.random_int(min=1, max=10)
             item["create_time"] = (
-                now - timedelta(days=day)).strftime("%Y-%m-%d %H:%M:%S")
+                now - timedelta(minutes=m)).strftime("%Y-%m-%d %H:%M:%S")
             item["update_time"] = now_str
 
         yield item
