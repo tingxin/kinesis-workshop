@@ -6,8 +6,8 @@ import setting
 from mysql import get_conn
 from mock import gen
 
-
-conn = get_conn()
+focus_database = 'demo'
+conn = get_conn(focus_database)
 creator = gen()
 
 for item in creator:
